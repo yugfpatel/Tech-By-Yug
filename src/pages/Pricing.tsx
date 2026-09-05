@@ -88,7 +88,9 @@ const Pricing = () => {
               </div>
 
               <a 
-                href="/#contact"
+                href={`https://wa.me/919274277177?text=${encodeURIComponent(`Hi! I am interested in the ${pkg.name} package.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`w-full py-4 px-6 text-sm font-semibold flex items-center justify-center gap-2 transition-all ${
                   pkg.isPopular 
                     ? 'bg-primary text-black hover:bg-primary-hover' 
