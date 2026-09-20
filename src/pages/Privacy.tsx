@@ -79,8 +79,18 @@ const Privacy = () => {
             </section>
 
             <section>
+              <h2 className="text-2xl font-bold text-text mb-4">Grievance Redressal (DPDP Compliance)</h2>
+              <p>In compliance with the Digital Personal Data Protection (DPDP) Act, if you have any questions, concerns, or grievances regarding how we process your personal data, you may contact our Grievance Officer:</p>
+              <div className="p-6 bg-surface border border-border mt-4">
+                <p className="font-semibold text-text mb-2">Grievance Officer: {legalConfig.founder}</p>
+                <p>Email: <a href={`mailto:${legalConfig.contactEmail}`} className="text-text underline hover:text-primary transition-colors">{legalConfig.contactEmail}</a></p>
+                <p className="mt-4 text-sm text-muted">We aim to respond to all grievances within the legally mandated period.</p>
+              </div>
+            </section>
+
+            <section>
               <h2 className="text-2xl font-bold text-text mb-4">Children's Privacy</h2>
-              <p>The website is not intentionally directed toward children and Tech By Yug does not knowingly collect children's personal information through the website.</p>
+              <p>The website is not intentionally directed toward children under 18 (as defined by the DPDP Act), and Tech By Yug does not knowingly collect verifiable personal information from children without parental consent.</p>
             </section>
 
             <section>
