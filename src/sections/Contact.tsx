@@ -38,11 +38,26 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      console.log('Form data ready for submission:', formData);
-      setSubmitted(true);
+      try {
+        const response = await fetch('https://formspree.io/f/mljdjgng', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+          setSubmitted(true);
+        } else {
+          console.error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Error submitting form', error);
+      }
     }
   };
 
