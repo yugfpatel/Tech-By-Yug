@@ -40,11 +40,7 @@ const Footer = () => {
                   WhatsApp: +91 92742 77177
                 </a>
               </li>
-              <li>
-                <a href="/insights/dpdp-founder-guide" className="hover:text-text transition-colors text-primary mt-4 inline-block">
-                  DPDP Founder's Guide
-                </a>
-              </li>
+              <li>Available for new projects.</li>
             </ul>
           </div>
 
