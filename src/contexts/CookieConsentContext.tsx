@@ -49,6 +49,27 @@ export const CookieProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   }, []);
 
+  // Dynamically inject Google Analytics only if analytics consent is granted
+  useEffect(() => {
+    if (preferences.analytics) {
+      if (document.querySelector('script[src*="G-SFLY593HB4"]')) return; // Prevent duplicate injection
+
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-SFLY593HB4';
+      document.head.appendChild(script1);
+
+      const script2 = document.createElement('script');
+      script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SFLY593HB4');
+      `;
+      document.head.appendChild(script2);
+    }
+  }, [preferences.analytics]);
+
   const savePreferences = (prefs: CookiePreferences) => {
     const updated = { ...prefs, essential: true, timestamp: new Date().toISOString() };
     localStorage.setItem('techbyyug_cookie_consent', JSON.stringify(updated));
